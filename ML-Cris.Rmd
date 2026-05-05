@@ -1,0 +1,88 @@
+---
+title: "Prediction"
+author: "Cristiano Gomes"
+date: "5/5/2026"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+##Overview
+
+In this project I built a machine learning model to predict how well a weight lighting exercise was done using data from sensors.
+I started by cleaning up the dataset, remove variables and also took out variables that were not helpful.
+The training part was 70% of the data. Validation was 30%. Then I trained a Random Forest model, that did well on the validation data.
+The model was about 99.5% of the time. THis mean it had as estimated error of around 0.5%. This shows that the model works with new data.
+I used the trained model to predict outcomes for 20 test cases given in the assignment.
+
+
+#Background
+We can get a lot of information about what people do every day using devices like Jawbone Up Nike FuelBand and Fitbit.. Most of the time these devices only tell us how much people are moving, not how we’ll they are doing things.
+
+In this project I want to figure out how people are doing exercises using data from accelerometers on parts of their body like their belt, forearm, arm and dumbbell.
+I have five types of exercises:
+
+•Class A: doing the exercise correctly
+•Classes B–E: doing the exercise incorrectly in different ways
+
+
+#Data
+The data I used for this project comes from the Human Activity Recognition dataset.
+
+•I have 19,622 examples to train our model
+•And 20 examples to test it
+
+Each example has a lot of sensor measurements and a target variable that tells us how the exercise was done.
+
+
+#Data Processing
+The dataset has a lot of variables. Many of them are not helpful for predicting how exercises are done.
+
+So I did the following:
+1. I removed variables that do not change much
+These variables are not useful because they are almost always the same.
+
+2. I removed variables with a lot of missing values
+If than 95% of the values Ire missing I got rid of the variable.
+
+3. I removed variables that do not help us predict
+I removed the few columns because they just have identifiers and timestamps not sensor measurements.
+
+After cleaning up the data I Int from 160 variables to 53 variables.
+
+
+# Model Building
+I split the cleaned dataset into two parts:
+•70% for training
+•30% for validation
+
+I chose a Random Forest model because:
+•It works Ill with a lot of predictors
+•It can handle relationships that're not straightforward
+•It does not need a lot of preprocessing
+
+I trained the model using 100 trees.
+
+# Model Evaluation
+I tested the model on the validation set.
+
+It was 99.49% of the time.
+
+This means that the model will make mistakes 0.51% of the time.
+
+The confusion matrix shows that the model does a job with all the exercise classes with only a few mistakes.
+
+
+# Discussion
+The Random Forest model did a job on the validation set. This is not surprising because the sensor data is very clear and the different exercise classes are easy to tell apart.
+One thing to keep in mind is that the dataset is very clean and organized so the model might not do Ill in real-life situations.
+
+#Prediction on Test Data
+I used the model to make predictions, on the 20 test cases.
+The predicted exercise classes are:
+B A B A A E D B A A B C B A E E A B B B
+
+#This project shows that I can use data from sensors to figure out how Ill people are doing exercises.
+The Random Forest model gave us an accurate solution without needing a lot of adjustments.
